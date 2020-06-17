@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus.*
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import java.util.*
 
 @RestController
 @RequestMapping("/api/v1/clients")
@@ -44,14 +43,14 @@ class ClientController (@Autowired private val clientRepository: ClientRepositor
     ) : Client {
         return clientRepository.findById(id)
                 .map { c ->
-                        c.setName(client.getName())
-                        c.setEmail(client.getEmail())
-                        c.serContactNumber(client.getContactNumber())
-                        c.setCpf(client.getCpf())
-                        c.setBornDate(client.getBornDate())
-                        clientRepository.save(c)
+                    c.name = client.name
+                    c.email = client.email
+                    c.contactNumber = client.contactNumber
+                    c.cpf = client.cpf
+                    c.bornDate = client.bornDate
+                    clientRepository.save(c)
                 }.orElseGet {
-                    client.setId(id)
+                    client.id = id
                     clientRepository.save(client)
                 }
     }
