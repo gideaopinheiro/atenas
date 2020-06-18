@@ -7,11 +7,14 @@ import javax.persistence.*
 @Data
 @Entity
 @Table
-data class Client(
+data class Client (
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column
         var id: Int,
+
+        @Column(name = "profileImg")
+        var profileImg: String?,
 
         @Column(name = "name")
         var name: String,
@@ -26,5 +29,9 @@ data class Client(
         var cpf: String,
 
         @Column(name = "born_date")
-        var bornDate: LocalDate
+        var bornDate: LocalDate,
+
+        @Column(name = "creditCard")
+        @OneToMany
+        var creditCard: MutableList<CreditCard>?
 )
