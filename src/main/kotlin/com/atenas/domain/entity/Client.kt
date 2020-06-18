@@ -14,7 +14,7 @@ data class Client (
         var id: Int,
 
         @Column(name = "profileImg")
-        var profileImg: String?,
+        var profilePicture: String?,
 
         @Column(name = "name")
         var name: String,
@@ -27,6 +27,9 @@ data class Client (
 
         @Column(name = "cpf")
         var cpf: String,
+
+        @Column(name = "address")
+        var address: String,
 
         @Column(name = "born_date")
         var bornDate: LocalDate,
