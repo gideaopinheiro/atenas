@@ -5,11 +5,11 @@ import com.atenas.domain.repository.ClientRepository
 import com.atenas.domain.repository.CreditCardRepository
 import com.atenas.exceptions.CustomException
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/v1")
@@ -22,7 +22,7 @@ class PaymentMethodController (
     @ResponseStatus(CREATED)
     fun registerCreditCard(
             @PathVariable userId: Int,
-            @RequestBody creditCard: CreditCard
+            @RequestBody @Valid creditCard: CreditCard
     ) {
         clientRepository.findById(userId)
                 .map { client ->

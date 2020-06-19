@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus.*
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/v1/clients")
@@ -24,8 +25,8 @@ class ClientController (@Autowired private val clientRepository: ClientRepositor
 
     @PostMapping
     @ResponseStatus(CREATED)
-    fun saveClient(@RequestBody client: Client) {
-        clientRepository.save(client)
+    fun saveClient(@RequestBody @Valid client: Client): Client {
+        return clientRepository.save(client)
     }
 
     @DeleteMapping("/{id}")
