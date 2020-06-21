@@ -4,7 +4,6 @@ import com.atenas.domain.repository.ClientRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.NOT_FOUND
-import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.server.ResponseStatusException
@@ -21,11 +20,7 @@ class FileUploadController(@Autowired private val clientRepository: ClientReposi
 
     @PostMapping("/profile-picture/{userId}")
     @ResponseStatus(CREATED)
-    fun uploadImage(
-            model: Model,
-            @RequestParam("file") file: MultipartFile,
-            @PathVariable userId: Int
-    ) {
+    fun uploadImage(@RequestParam("file") file: MultipartFile, @PathVariable userId: Int) {
         clientRepository.findById(userId)
                 .map { client ->
                     val fileName: String = storeImage(file)

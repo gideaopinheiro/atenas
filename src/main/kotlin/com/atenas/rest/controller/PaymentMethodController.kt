@@ -20,10 +20,7 @@ class PaymentMethodController (
 
     @PostMapping("/credit-card/{userId}")
     @ResponseStatus(CREATED)
-    fun registerCreditCard(
-            @PathVariable userId: Int,
-            @RequestBody @Valid creditCard: CreditCard
-    ) {
+    fun registerCreditCard(@PathVariable userId: Int, @RequestBody @Valid creditCard: CreditCard) {
         clientRepository.findById(userId)
                 .map { client ->
                     if(client.id == creditCard.userId) {
@@ -31,7 +28,7 @@ class PaymentMethodController (
                         client.creditCard?.add(creditCard)
                         clientRepository.save(client)
                     } else {
-                        throw CustomException("Id's incompatíveis")
+                        throw CustomException()
                     }
                 }.orElseThrow { ResponseStatusException(NOT_FOUND) }
     }

@@ -6,7 +6,6 @@ import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotEmpty
 
-@Data
 @Entity
 @Table
 data class CreditCard(

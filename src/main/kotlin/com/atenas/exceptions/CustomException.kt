@@ -1,6 +1,6 @@
 package com.atenas.exceptions
 
-class CustomException(message: String) : RuntimeException() {
+class CustomException : RuntimeException() {
     override val message: String?
         get() = super.message
 }

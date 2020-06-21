@@ -6,10 +6,9 @@ import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotEmpty
 
-@Data
 @Entity
 @Table
-data class Client (
+data class Client(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column
@@ -32,7 +31,7 @@ data class Client (
 
         @Column(name = "cpf")
         @NotEmpty(message = "cpf field is required")
-        @CPF(message  = "cpf not valid")
+        @CPF(message = "cpf not valid")
         var cpf: String,
 
         @Column(name = "address")

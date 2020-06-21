@@ -1,15 +1,11 @@
 package com.atenas.domain.entity
 
-import lombok.Builder
-import lombok.Data
 import javax.persistence.*
 import javax.validation.constraints.NotEmpty
 
-@Data
-@Builder
 @Entity
 @Table
-class Guy(
+data class Guy(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Int,
